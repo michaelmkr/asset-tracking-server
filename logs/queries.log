@@ -1,0 +1,11 @@
+{"message":{"method":"GET","path":"/location/1","params":{"id":"1"}},"level":"router","timestamp":"2020-03-24 19:20:18"}
+{"message":{"method":"GET","path":"/location/1","params":{"id":"1"}},"level":"router","timestamp":"2020-03-24 19:22:24"}
+{"message":{"method":"GET","path":"/location/1","params":{"id":"1"}},"level":"router","timestamp":"2020-03-24 19:23:42"}
+{"message":{"method":"GET","path":"/location/1","params":{"id":"1"}},"level":"router","timestamp":"2020-03-24 19:24:14"}
+{"message":{"method":"GET","path":"/location/1","params":{"id":"1"}},"level":"router","timestamp":"2020-03-24 19:25:08"}
+{"message":{"method":"GET","path":"/location/1","params":{"id":"1"}},"level":"router","timestamp":"2020-03-24 19:25:26"}
+{"message":{"method":"GET","path":"/location/1","params":{"id":"1"}},"level":"router","timestamp":"2020-03-24 19:26:15"}
+{"message":{"method":"GET","path":"/location/1","params":{"id":"1"}},"level":"router","timestamp":"2020-03-24 19:26:36"}
+{"message":{"method":"GET","path":"/location/1","params":{"id":"1"}},"level":"router","timestamp":"2020-03-24 19:29:43"}
+{"message":{"method":"GET","path":"/location/1","params":{"id":"1"}},"level":"router","timestamp":"2020-03-24 19:31:38"}
+{"message":{"method":"GET","path":"/location"},"level":"router","timestamp":"2020-03-24 19:32:58"}

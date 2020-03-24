@@ -1,0 +1,6 @@
+{
+  "cwd": "./src",
+  "exclude": [
+    "**/*.spec.js"
+  ]
+}
