@@ -16,6 +16,54 @@ const hardcodedLocations = [
   },
 ];
 
+const details = [
+  {
+    id: 0,
+    location: {
+      lat: 1,
+      lng: 2,
+      timestamp: 1589444836,
+    },
+    allowedLocation: {
+      lat: 1,
+      lng: 2,
+      radius: 5,
+    },
+    customer: 'Casino Baden',
+    validUntil: '15.05.2021',
+  },
+  {
+    id: 1,
+    location: {
+      lat: 1,
+      lng: 2,
+      timestamp: 1589444836,
+    },
+    allowedLocation: {
+      lat: 1,
+      lng: 2,
+      radius: 5,
+    },
+    customer: 'Casino Baden',
+    validUntil: '15.05.2021',
+  },
+  {
+    id: 2,
+    location: {
+      lat: 1,
+      lng: 2,
+      timestamp: 1589444836,
+    },
+    allowedLocation: {
+      lat: 1,
+      lng: 2,
+      radius: 5,
+    },
+    customer: 'Casino Baden',
+    validUntil: '15.05.2021',
+  },
+];
+
 // Infos from BC
 // lat
 // long
@@ -47,7 +95,7 @@ async function getAll() {
 }
 
 async function getId(id) {
-  return hardcodedLocations.find(x => x.id === Number(id));
+  return details.find(x => x.id === Number(id));
 }
 
 module.exports = {
