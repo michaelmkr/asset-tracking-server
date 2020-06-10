@@ -45,16 +45,17 @@ router.get('/location/:id', async (req, res, next) => {
 });
 
 
-// TODO
-// POST /location
-// post a new machine
-router.post('/input', async (req, res, next) => {
+router.post('/location', async (req, res, next) => {
   try {
-    const result = await locationController.get(req.body);
-    res.json(result);
+    // TODO
+    // POST /location
+    // const result = await locationController.get(req.body);
+    // res.json(result);
+    res.send('200 OK');
     return logToFile.router({
       method: req.method,
       path: req.url,
+      body: req.body,
     });
   } catch (error) {
     logger.info(error.message);
@@ -62,5 +63,25 @@ router.post('/input', async (req, res, next) => {
   }
 });
 
+router.post('/updateDetails', async (req, res, next) => {
+  try {
+    // TODO
+    // update machine details
+    // const result = await locationController.get(req.body);
+    // res.json(result);
+    res.send('200 OK');
+    return logToFile.router({
+      method: req.method,
+      path: req.url,
+      body: req.body,
+    });
+  } catch (error) {
+    logger.info(error.message);
+    return next(new APIError(error.message, httpStatus.INTERNAL_SERVER_ERROR, true));
+  }
+});
+
+// TODO
+// post a new machine
 
 module.exports = router;
