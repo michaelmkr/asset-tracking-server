@@ -87,6 +87,11 @@ const details = [
   "customer": "Casino Baden",
   "valid-until": "15.05.2021"
 }
+ALSO --> LOCATION HISTORY = PATH
+ACTIVE / INACTIVE
+
+Advantage of the Blockchain -> a good showcase -> Drone showcase
+
 */
 
 async function getAll() {

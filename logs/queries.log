@@ -10,3 +10,8 @@
 {"message":{"method":"POST","path":"/location","body":{"lat":1,"lng":2,"timestamp":1589444836}},"level":"router","timestamp":"2020-06-10 10:33:02"}
 {"message":{"method":"GET","path":"/location/1","params":{"id":"1"}},"level":"router","timestamp":"2020-06-10 10:33:05"}
 {"message":{"method":"POST","path":"/updateDetails","body":{"id":5213848,"allowedLocation":{"lat":1,"lng":2,"radius":5},"customer":"Casino Baden","valid-until":"15.05.2021"}},"level":"router","timestamp":"2020-06-10 10:33:07"}
+{"message":{"method":"GET","path":"/location/1","params":{"id":"1"}},"level":"router","timestamp":"2020-06-10 10:39:40"}
+{"message":{"method":"GET","path":"/location"},"level":"router","timestamp":"2020-06-10 12:30:26"}
+{"message":{"method":"GET","path":"/location/1","params":{"id":"1"}},"level":"router","timestamp":"2020-06-10 12:30:41"}
+{"message":{"method":"POST","path":"/location","body":{"lat":1,"lng":2,"timestamp":1589444836}},"level":"router","timestamp":"2020-06-10 12:30:51"}
+{"message":{"method":"POST","path":"/updateDetails","body":{"id":5213848,"allowedLocation":{"lat":1,"lng":2,"radius":5},"customer":"Casino Baden","valid-until":"15.05.2021"}},"level":"router","timestamp":"2020-06-10 12:31:05"}
