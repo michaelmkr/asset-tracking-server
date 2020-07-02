@@ -1,18 +1,18 @@
 const hardcodedLocations = [
   {
     id: 0,
-    lat: 7.21456,
-    lng: 7.21456,
+    lat: 48.2138508,
+    lng: 15.6296502,
   },
   {
     id: 1,
-    lat: 7.21796,
-    lng: 7.36456,
+    lat: 50.9412818,
+    lng: 6.9560927,
   },
   {
     id: 2,
-    lat: 7.79856,
-    lng: 7.35914,
+    lat: 43.7669973,
+    lng: 11.2459052,
   },
 ];
 
@@ -20,46 +20,49 @@ const details = [
   {
     id: 0,
     location: {
-      lat: 1,
-      lng: 2,
+      lat: 48.2138508,
+      lng: 15.6296502,
       timestamp: 1589444836,
     },
     allowedLocation: {
-      lat: 1,
-      lng: 2,
-      radius: 5,
+      lat: 48.2138508,
+      lng: 15.6296502,
+      radius: 1,
     },
-    customer: 'Casino Baden',
+    name: 'FH St. Pölten',
+    customer: 'FH St. Pölten GmbH',
     validUntil: '15.05.2021',
   },
   {
     id: 1,
     location: {
-      lat: 1,
-      lng: 2,
+      lat: 50.9412818,
+      lng: 6.9560927,
       timestamp: 1589444836,
     },
     allowedLocation: {
-      lat: 1,
-      lng: 2,
-      radius: 5,
+      lat: 50.9412818,
+      lng: 6.9560927,
+      radius: 3,
     },
-    customer: 'Casino Baden',
+    name: 'Kölner Dom',
+    customer: 'Stadt Köln',
     validUntil: '15.05.2021',
   },
   {
     id: 2,
     location: {
-      lat: 1,
-      lng: 2,
+      lat: 43.7669973,
+      lng: 11.2459052,
       timestamp: 1589444836,
     },
     allowedLocation: {
-      lat: 1,
-      lng: 2,
+      lat: 43.7669973,
+      lng: 11.2459052,
       radius: 5,
     },
-    customer: 'Casino Baden',
+    name: 'Basilica di Santa Croce di Firenze',
+    customer: 'Stadt Florenz in Italien',
     validUntil: '15.05.2021',
   },
 ];
