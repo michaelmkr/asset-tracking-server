@@ -5,6 +5,8 @@ const httpStatus = require('http-status');
 const helmet = require('helmet');
 const cors = require('cors');
 
+// eslint-disable-next-line no-unused-vars
+const mqtt = require('./mqtt');
 const routes = require('./routes');
 const APIError = require('../utils/error');
 
