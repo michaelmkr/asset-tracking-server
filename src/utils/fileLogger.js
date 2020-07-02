@@ -5,7 +5,8 @@ const myFormat = winston.format.combine(winston.format.timestamp({ format: 'YYYY
 const logger = winston.createLogger({
   levels: {
     router: 0,
-    all: 1,
+    mqtt: 1,
+    all: 2,
   },
   level: 'all',
   format: myFormat,
