@@ -1,25 +1,4 @@
-const hardcodedLocations = [
-  {
-    id: 0,
-    lat: 48.2138508,
-    lng: 15.6296502,
-  },
-  {
-    id: 1,
-    lat: 50.9412818,
-    lng: 6.9560927,
-  },
-  {
-    id: 2,
-    lat: 43.7669973,
-    lng: 11.2459052,
-  },
-  {
-    id: 3,
-    lat: 43.7669973,
-    lng: 11.2459052,
-  },
-];
+const haversine = require('haversine');
 
 const details = [
   {
@@ -82,8 +61,8 @@ const details = [
     },
     allowedLocation: {
       lat: 48.2819,
-      lng: 15.7118,
-      radius: 5,
+      lng: 15.7122,
+      radius: 0.01,
     },
     name: 'Microcontroller',
     customer: 'Christoph Braun',
@@ -92,14 +71,14 @@ const details = [
   },
 ];
 
-// Infos from BC
-// lat
-// long
-// timestamp
-// isSet
-// isActive
-
 /*
+Infos from BC
+lat
+long
+timestamp
+isSet
+isActive
+
 ALSO --> LOCATION HISTORY = PATH
 ACTIVE / INACTIVE
 Advantage of the Blockchain -> a good showcase -> Drone showcase
@@ -108,12 +87,22 @@ Advantage of the Blockchain -> a good showcase -> Drone showcase
 async function getAll() {
   const locations = [];
   details.forEach((element) => {
+
+    let isInZone = false;
+    const start = { latitude: element.location.lat, longitude: element.location.lng };
+    const end = { latitude: element.allowedLocation.lat, longitude: element.allowedLocation.lng };
+    const distance = haversine(start, end);
+    if (distance < element.allowedLocation.radius) {
+      isInZone = true;
+    }
+
     locations.push(
       {
         id: element.id,
         lat: element.location.lat,
         lng: element.location.lng,
         active: element.active,
+        isInZone,
       },
     );
   });
@@ -166,13 +155,12 @@ function updateMqttData() {
   }
 
   if (lonCell.timestamp > lonGps.timestamp || lonGps.value === 0.0000) {
-    details[id].location.lat = lonCell.value;
+    details[id].location.lng = lonCell.value;
     details[id].location.timestamp = lonCell.timestamp;
   } else {
-    details[id].location.lat = lonGps.value;
+    details[id].location.lng = lonGps.value;
     details[id].location.timestamp = lonGps.timestamp;
   }
-
 }
 
 
