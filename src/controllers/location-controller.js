@@ -155,7 +155,13 @@ function checkForLocationUpdate(id, lat, lng, timestamp) {
 
   if (distance > 0.002) {
     console.log('needs to be updated!!');
-    details[id].history.push(details[id].location);
+    const location = {
+      lat: details[id].location.lat,
+      lng: details[id].location.lng,
+      timestamp: details[id].location.timestamp,
+    };
+    details[id].history.push(location);
+
     details[id].location.lat = lat;
     details[id].location.lng = lng;
     details[id].location.timestamp = timestamp;
