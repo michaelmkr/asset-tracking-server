@@ -187,14 +187,17 @@ function onMqttDataReceived(topic, message, date) {
     case '/fhstplocationtracking/lonCell':
       lonCell.value = parseFloat(message.toString());
       lonCell.timestamp = date;
+      updateMqttData();
       break;
     case '/fhstplocationtracking/latGps':
       latGps.value = parseFloat(message.toString());
       latGps.timestamp = date;
+      updateMqttData();
       break;
     case '/fhstplocationtracking/lonGps':
       lonGps.value = parseFloat(message.toString());
       lonGps.timestamp = date;
+      updateMqttData();
       break;
   }
 }
