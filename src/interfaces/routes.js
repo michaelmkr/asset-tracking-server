@@ -44,32 +44,11 @@ router.get('/location/:id', async (req, res, next) => {
   }
 });
 
-
-router.post('/location', async (req, res, next) => {
-  try {
-    // TODO
-    // POST /location
-    // const result = await locationController.get(req.body);
-    // res.json(result);
-    res.send('200 OK');
-    return logToFile.router({
-      method: req.method,
-      path: req.url,
-      body: req.body,
-    });
-  } catch (error) {
-    logger.info(error.message);
-    return next(new APIError(error.message, httpStatus.INTERNAL_SERVER_ERROR, true));
-  }
-});
-
+// POST /updateDetails
+// update the data for one specific machine
 router.post('/updateDetails', async (req, res, next) => {
   try {
-    // TODO
-    // update machine details
-    // const result = await locationController.get(req.body);
-    // res.json(result);
-    res.send('200 OK');
+    res.send(await locationController.updateDetails(req.body));
     return logToFile.router({
       method: req.method,
       path: req.url,
