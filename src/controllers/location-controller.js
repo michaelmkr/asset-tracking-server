@@ -1,4 +1,5 @@
 const haversine = require('haversine');
+const blockchain = require('../interfaces/blockchain');
 
 const details = [
   {
@@ -71,7 +72,23 @@ const details = [
     customer: 'Christoph Braun',
     validUntil: '15.05.2021',
     active: true,
-    history: [],
+    history: [
+      {
+        lat: 48.2820,
+        lng: 15.7123,
+        timestamp: 1593712794109,
+      },
+      {
+        lat: 48.2818,
+        lng: 15.7120,
+        timestamp: 1593712794109,
+      },
+      {
+        lat: 48.2819,
+        lng: 15.7118,
+        timestamp: 1593712794109,
+      },
+    ],
   },
 ];
 
@@ -165,6 +182,8 @@ function checkForLocationUpdate(id, lat, lng, timestamp) {
     details[id].location.lat = lat;
     details[id].location.lng = lng;
     details[id].location.timestamp = timestamp;
+    // TODO Send Data to Smart Contract
+    blockchain.encodeData(id, lat, lng, timestamp);
   } else if (distance < 0.002) {
     console.log('no need to be updated!!');
   }

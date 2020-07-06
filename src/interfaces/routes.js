@@ -3,6 +3,7 @@ const express = require('express');
 const httpStatus = require('http-status');
 
 const locationController = require('../controllers/location-controller');
+const blockchain = require('../interfaces/blockchain');
 
 const logger = require('../utils/logger');
 const logToFile = require('../utils/fileLogger');
@@ -53,6 +54,25 @@ router.post('/updateDetails', async (req, res, next) => {
       method: req.method,
       path: req.url,
       body: req.body,
+    });
+  } catch (error) {
+    logger.info(error.message);
+    return next(new APIError(error.message, httpStatus.INTERNAL_SERVER_ERROR, true));
+  }
+});
+
+// GET /blockchain
+// get all data for one specific machine
+router.get('/blockchain', async (req, res, next) => {
+  try {
+    // const result = await locationController.getId(req.params.id);
+    // TODO return parsed data from blockchain
+    const result = await blockchain.retrieveHistory();
+    res.json(result);
+    return logToFile.router({
+      method: req.method,
+      path: req.url,
+      params: req.params,
     });
   } catch (error) {
     logger.info(error.message);
