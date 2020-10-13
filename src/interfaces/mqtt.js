@@ -10,13 +10,14 @@ function logMessage(topic, message) {
   });
 }
 
-const brokerUrl = 'mqtt://test.mosquitto.org:1883';
+// const brokerUrl = 'mqtt://test.mosquitto.org:1883';
+const brokerUrl = 'mqtt://broker.hivemq.com:1883';
 const client = mqtt.connect(brokerUrl);
 const topics = {
-  '/fhstplocationtracking/latCell': { qos: 1 },
-  '/fhstplocationtracking/lonCell': { qos: 1 },
-  '/fhstplocationtracking/latGps': { qos: 1 },
-  '/fhstplocationtracking/lonGps': { qos: 1 },
+  'fhstplocationtracking/latCell': { qos: 1 },
+  'fhstplocationtracking/lonCell': { qos: 1 },
+  'fhstplocationtracking/latGps': { qos: 1 },
+  'fhstplocationtracking/lonGps': { qos: 1 },
 };
 
 client.on('message', (topic, message) => {
