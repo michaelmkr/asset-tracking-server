@@ -12,13 +12,54 @@ const details = [
     allowedLocation: {
       lat: 48.2138508,
       lng: 15.6296502,
-      radius: 1,
+      radius: 0.5,
     },
     name: 'FH St. Pölten',
     customer: 'FH St. Pölten GmbH',
     validUntil: '15.05.2021',
     active: true,
-    history: [],
+    history: [
+      {
+        lat: 48.2138,
+        lng: 15.6296,
+        timestamp: 1593712794109,
+      },
+      {
+        lat: 48.2130,
+        lng: 15.6305,
+        timestamp: 1593712794109,
+      },
+      {
+        lat: 48.2127,
+        lng: 15.6315,
+        timestamp: 1593712794109,
+      },
+      {
+        lat: 48.2121,
+        lng: 15.6339,
+        timestamp: 1593712794109,
+      },
+      {
+        lat: 48.2122,
+        lng: 15.6369,
+        timestamp: 1593712794109,
+      },
+      {
+        lat: 48.2133,
+        lng: 15.6358,
+        timestamp: 1593712794109,
+      },
+      {
+        lat: 48.2139,
+        lng: 15.6335,
+        timestamp: 1593712794109,
+      },
+      {
+        lat: 48.2137,
+        lng: 15.6324,
+        timestamp: 1593712794109,
+      },
+    ],
   },
   {
     id: 1,
@@ -36,7 +77,28 @@ const details = [
     customer: 'Stadt Köln',
     validUntil: '15.05.2021',
     active: true,
-    history: [],
+    history: [
+      {
+        lat: 50.9412818,
+        lng: 6.9560927,
+        timestamp: 1593712794109,
+      },
+      {
+        lat: 50.9422818,
+        lng: 6.9570927,
+        timestamp: 1593712794109,
+      },
+      {
+        lat: 50.9432818,
+        lng: 6.9580927,
+        timestamp: 1593712794109,
+      },
+      {
+        lat: 50.9432818,
+        lng: 6.9600927,
+        timestamp: 1593712794109,
+      },
+    ],
   },
   {
     id: 2,
@@ -54,19 +116,30 @@ const details = [
     customer: 'Stadt Florenz in Italien',
     validUntil: '15.05.2021',
     active: false,
-    history: [],
+    history: [
+      {
+        lat: 43.7669973,
+        lng: 11.2459052,
+        timestamp: 1593712794109,
+      },
+      {
+        lat: 43.7657973,
+        lng: 11.2447052,
+        timestamp: 1593712794109,
+      },
+    ],
   },
   {
     id: 3,
     location: {
-      lat: 48.2819,
-      lng: 15.7118,
-      timestamp: 1593712794109,
+      lat: 48.2610,
+      lng: 15.7210,
+      timestamp: 1602691906161,
     },
     allowedLocation: {
       lat: 48.2819,
       lng: 15.7122,
-      radius: 0.01,
+      radius: 1.0,
     },
     name: 'Microcontroller',
     customer: 'Christoph Braun',
@@ -79,13 +152,23 @@ const details = [
         timestamp: 1593712794109,
       },
       {
-        lat: 48.2818,
-        lng: 15.7120,
+        lat: 48.2810,
+        lng: 15.7110,
         timestamp: 1593712794109,
       },
       {
-        lat: 48.2819,
-        lng: 15.7118,
+        lat: 48.2750,
+        lng: 15.7270,
+        timestamp: 1593712794109,
+      },
+      {
+        lat: 48.2650,
+        lng: 15.7240,
+        timestamp: 1593712794109,
+      },
+      {
+        lat: 48.2610,
+        lng: 15.7210,
         timestamp: 1593712794109,
       },
     ],
@@ -170,7 +253,7 @@ function checkForLocationUpdate(id, lat, lng, timestamp) {
   const distance = haversine(start, end);
   console.log(`distance between old and new coordinates is ${distance} kilometers`);
 
-  if (distance > 0.002) {
+  if (distance > 0.001) {
     console.log('needs to be updated!!');
     const location = {
       lat: details[id].location.lat,
@@ -184,7 +267,7 @@ function checkForLocationUpdate(id, lat, lng, timestamp) {
     details[id].location.timestamp = timestamp;
     // TODO Send Data to Smart Contract
     blockchain.encodeData(id, lat, lng, timestamp);
-  } else if (distance < 0.002) {
+  } else if (distance < 0.001) {
     console.log('no need to be updated!!');
   }
 }
@@ -193,17 +276,17 @@ function updateMqttData() {
   const id = 3;
   if (latGps.value === 0.0000 || lonGps.value === 0.0000) {
     console.log('GPS is 0.0000');
-    if (Math.abs(latCell.timestamp - lonCell.timestamp) > 1000) {
+    if (Math.abs(latCell.timestamp - lonCell.timestamp) > 2000) {
       console.log('more than 1 second between updates - not updating');
-    } else if (Math.abs(latCell.timestamp - lonCell.timestamp) < 1000) {
+    } else if (Math.abs(latCell.timestamp - lonCell.timestamp) < 2000) {
       console.log('less than 1 second between updates - passing data to next function');
       checkForLocationUpdate(id, latCell.value, lonCell.value, Math.max(latCell.timestamp, lonCell.timestamp));
     }
   } else if (latGps.value !== 0.0000 || lonGps.value !== 0.0000) {
     console.log('GPS is not 0.0000');
-    if (Math.abs(latGps.timestamp - lonGps.timestamp) > 1000) {
+    if (Math.abs(latGps.timestamp - lonGps.timestamp) > 2000) {
       console.log('more than 1 second between updates - not updating');
-    } else if (Math.abs(latGps.timestamp - lonGps.timestamp) < 1000) {
+    } else if (Math.abs(latGps.timestamp - lonGps.timestamp) < 2000) {
       console.log('less than 1 second between updates - passing data to next function');
       checkForLocationUpdate(id, latGps.value, lonGps.value, Math.max(latGps.timestamp, lonGps.timestamp));
     }
@@ -214,22 +297,22 @@ function updateMqttData() {
 function onMqttDataReceived(topic, message, date) {
   // eslint-disable-next-line default-case
   switch (topic.toString()) {
-    case '/fhstplocationtracking/latCell':
+    case 'fhstplocationtracking/latCell':
       latCell.value = parseFloat(message.toString());
       latCell.timestamp = date;
       updateMqttData();
       break;
-    case '/fhstplocationtracking/lonCell':
+    case 'fhstplocationtracking/lonCell':
       lonCell.value = parseFloat(message.toString());
       lonCell.timestamp = date;
       updateMqttData();
       break;
-    case '/fhstplocationtracking/latGps':
+    case 'fhstplocationtracking/latGps':
       latGps.value = parseFloat(message.toString());
       latGps.timestamp = date;
       updateMqttData();
       break;
-    case '/fhstplocationtracking/lonGps':
+    case 'fhstplocationtracking/lonGps':
       lonGps.value = parseFloat(message.toString());
       lonGps.timestamp = date;
       updateMqttData();
