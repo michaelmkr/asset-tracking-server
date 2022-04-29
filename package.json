@@ -6,7 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "async": "^1.5.2",
+    "async": "^2.6.4",
     "axios": "^0.19.0",
     "body-parser": "^1.18.3",
     "convict": "^6.0.0",
